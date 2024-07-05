@@ -1,14 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Proveedores</title>
-<link rel="stylesheet" href="./assets/css/style.css"/>
+<title>Delete</title>
+<link rel="stylesheet" href="./assets/css/style.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/81a2ed02b0.js"
+	crossorigin="anonymous"></script>
 </head>
 <body class="container ">
 	<header>
@@ -24,29 +29,37 @@
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
 						<a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>">Home</a> 
-						<a class="nav-link" href="/create.jsp">Crear Proveedor</a> 
-						<a class="nav-link" href="<%=request.getContextPath()%>/teachers">Contacto</a>
+						<a class="nav-link" href="create.jsp">Crear Proveedor</a>
+						<a class="nav-link" href="ReadAllProveedoresServlet">Ver Proveedor</a>	
+						<a class="nav-link" href="ReadById.jso">Buscar Proveedor</a>						
+						<a class="nav-link" href="update.jsp">Modificar Proveedor</a>
 					</div>
 				</div>
 			</div>
 		</nav>
 	</header>
 	<main class="bgdark2">
-		<div class="container text-center">
-			<h1>CRUD Proveedores</h1>
-		</div>
-		<div class="row py-5 justify-content-center">
-			<div class="col-auto">
-				<a href="create.jsp"><button type="button"
-						class="btn btn-primary">Create</button></a> <a href="read.jsp"><button
-						type="button" class="btn btn-success">Read</button></a> <a
-					href="update.jsp"><button type="button" class="btn btn-warning">Update</button></a>
-				<a href="delete.jsp"><button type="button"
-						class="btn btn-danger">Delete</button></a>
+		<div class="container">
+        <h1 class="text-center">Eliminar Proveedor</h1>
+        <form action="DeleteProveedorServlet" method="post">
+            <div class="mb-3">
+                <label for="id" class="form-label">ID del Proveedor</label>
+                <input type="text" class="form-control" id="id" name="id" required>
+            </div>
+            <div class="row py-2 justify-content-center">
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary">
+						<i class="fa-solid fa-trash" style="color: #ffffff;"></i> Eliminar
+					</button>
+					<a class="btn btn-info" href="index.jsp">Regresar <i class="fa-solid fa-rotate-left" style="color: #ffffff;"></i> </a>
+				</div>
 			</div>
-		</div>
+        </form>
+    </div>
 	</main>
-	<footer	class="container text-center bg-primary-subtle text-primary-emphasis pb-2 pt-2">
+	<br>
+	<footer
+		class="container text-center bg-primary-subtle text-primary-emphasis pb-2 pt-2">
 		<p>
 			Escíbenos a <a href="mailto:contacto@lacosa.com">contacto</a>
 		</p>
@@ -69,6 +82,6 @@
     	$('#tblActor').DataTable();
 		})
 	</script>
-
 </body>
 </html>
+

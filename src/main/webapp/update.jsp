@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create</title>
+<title>Update</title>
 <link rel="stylesheet" href="./assets/css/style.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -29,9 +29,9 @@
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
 						<a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>">Home</a> 
-						<a class="nav-link" href="ReadAllProveedoresServlet">Ver Proveedor</a>
-						<a class="nav-link" href="readById.jsp">Buscar Proveedor</a>
-						<a class="nav-link" href="update.jsp">Modificar Proveedor</a>
+						<a class="nav-link" href="create.jsp">Crear Proveedor</a>
+						<a class="nav-link" href="ReadAllProveedoresServlet">Ver Proveedor</a>	
+						<a class="nav-link" href="ReadById.jso">Buscar Proveedor</a>
 						<a class="nav-link" href="delete.jsp">Eliminar Proveedor</a>
 					</div>
 				</div>
@@ -39,47 +39,49 @@
 		</nav>
 	</header>
 	<main class="bgdark2">
-		<div class="container pt-5">
-        <h1 class="text-center">Crear Proveedor</h1>
-        <form action="CreateProveedorServlet" method="post">
-            <!-- Campos del formulario -->
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
+    <div class="container">
+        <h1 class="text-center">Actualizar Proveedor</h1>
+        <form action="UpdateProveedorServlet" method="post">
+            <div class="mb-3">
+                <label for="id" class="form-label">ID del Proveedor</label>
+                <input type="text" class="form-control" id="id" name="id" required>
+            </div>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" required>
             </div>
-            <div class="form-group">
-                <label for="rut">RUT</label>
+            <div class="mb-3">
+                <label for="rut" class="form-label">RUT</label>
                 <input type="text" class="form-control" id="rut" name="rut" required>
             </div>
-            <div class="form-group">
-                <label for="direccion">Dirección</label>
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Dirección</label>
                 <input type="text" class="form-control" id="direccion" name="direccion" required>
             </div>
-            <div class="form-group">
-                <label for="correo">Correo</label>
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo</label>
                 <input type="email" class="form-control" id="correo" name="correo" required>
             </div>
-            <div class="form-group">
-                <label for="telefono">Teléfono</label>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
                 <input type="text" class="form-control" id="telefono" name="telefono" required>
             </div>
-            <div class="form-group">
-                <label for="contacto">Contacto</label>
+            <div class="mb-3">
+                <label for="contacto" class="form-label">Contacto</label>
                 <input type="text" class="form-control" id="contacto" name="contacto" required>
             </div>
-            <div class="form-group pb-2">
-                <label for="telefono_contacto">Teléfono Contacto</label>
+            <div class="mb-3">
+                <label for="telefono_contacto" class="form-label">Teléfono del Contacto</label>
                 <input type="text" class="form-control" id="telefono_contacto" name="telefono_contacto" required>
             </div>
             <div class="row py-2 justify-content-center">
 				<div class="col-auto">
 					<button type="submit" class="btn btn-primary">
-						<i class="fa-solid fa-plus" style="color: #ffffff;"></i> Crear
+						<i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i> Modificar
 					</button>
 					<a class="btn btn-info" href="index.jsp">Regresar <i class="fa-solid fa-rotate-left" style="color: #ffffff;"></i> </a>
 				</div>
 			</div>
-            
         </form>
     </div>
 	</main>

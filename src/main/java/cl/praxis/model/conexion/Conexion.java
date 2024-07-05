@@ -4,33 +4,35 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-//Singleton
 public class Conexion {
-	
-	private static Connection con = null;
-	
-	//Constructor
-	private Conexion() {
-		//logica de la conexion a la BD	
-		try {
-			
-			Class.forName("org.postgresql.Driver");//porque eto es postgresql
-			
-			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/desafio_proveedores","postgres", "12345678");
-			boolean isValid = con.isValid(5000);
-			
-			System.out.println(isValid ? "TEST OK POSTGRESQL" : "TEST FAILED POSTGRESQL");
-			
-		}catch(ClassNotFoundException | SQLException ex) {
-			System.out.println("Error al conectar con la BD: " + ex.getMessage());
-		}
-	}
+    private static Connection con = null;
 
-	public static Connection getCon() {
-		//Si con es nulo llama al contructor
-		if(con == null) {
-			new Conexion();
-		}
-		return con;
-	}
+    // Constructor privado para evitar instanciación externa
+    private Conexion() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/desafio_proveedores", "postgres", "12345678");
+            System.out.println("Conexión establecida correctamente a PostgreSQL");
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println("Error al conectar con la BD: " + ex.getMessage());
+        }
+    }
+
+    public static Connection getCon() {
+        if (con == null) {
+            synchronized (Conexion.class) {
+                if (con == null) {
+                    new Conexion(); // crea la instancia de conexión
+                }
+            }
+        }
+        try {
+            if (!con.isValid(5000)) { // verifica si la conexión sigue válida
+                con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/desafio_proveedores", "postgres", "12345678");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al validar la conexión: " + e.getMessage());
+        }
+        return con;
+    }
 }

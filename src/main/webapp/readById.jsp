@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>ReadById</title>
 <link rel="stylesheet" href="./assets/css/style.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/81a2ed02b0.js"
+	crossorigin="anonymous"></script>
 </head>
-<body class="container ">
+<body class="container">
 	<header>
 		<nav class="navbar navbar-expand-lg bg-body-tertiary">
 			<div class="container-fluid">
@@ -26,26 +28,36 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
-						<a class="nav-link active" aria-current="page"
-							href="<%=request.getContextPath()%>">Home</a>
+						<a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>">Home</a> 
+						<a class="nav-link" href="create.jsp">Crear Proveedor</a>
+						<a class="nav-link" href="ReadAllProveedoresServlet">Ver Proveedor</a>						
+						<a class="nav-link" href="update.jsp">Modificar Proveedor</a>
+						<a class="nav-link" href="delete.jsp">Eliminar Proveedor</a>
 					</div>
 				</div>
+			</div>
 		</nav>
 	</header>
 	<main class="bgdark2">
-		<div class="container text-center">
-			<h1>Gestión de Proveedores</h1>
-		</div>
-		<div class="row py-5 justify-content-center">
-			<div class="col-12 col-md-6 mb-3">
-				<a class="btn btn-primary d-block mb-3" href="create.jsp">Crear	Proveedor</a> 
-				<a class="btn btn-success d-block mb-3" href="ReadAllProveedoresServlet">Ver Proveedores</a> 
-				<a class="btn btn-success d-block mb-3" href="readById.jsp">Buscar Proveedor por ID</a> 
-				<a class="btn btn-warning d-block mb-3" href="update.jsp">Actualizar Proveedor</a> 
-				<a class="btn btn-danger d-block" href="delete.jsp">Eliminar Proveedor</a>
-			</div>
+		<div class="container">
+			<h1 class="text-center">Buscar Proveedor por ID</h1>
+			<form action="ReadProveedorByIdServlet" method="post">
+				<div class="mb-3">
+					<label for="id" class="form-label">ID del Proveedor</label> <input
+						type="text" class="form-control" id="id" name="id" required>
+				</div>
+				<div class="row py-2 justify-content-center">
+					<div class="col-auto">
+						<button type="submit" class="btn btn-primary">
+							<i class="fa-solid fa-eye" style="color: #ffffff;"></i></i> Buscar
+						</button>
+						<a class="btn btn-info" href="index.jsp">Regresar <i class="fa-solid fa-rotate-left" style="color: #ffffff;"></i> </a>
+					</div>
+				</div>
+			</form>
 		</div>
 	</main>
+	<br><br>
 	<footer
 		class="container text-center bg-primary-subtle text-primary-emphasis pb-2 pt-2">
 		<p>
